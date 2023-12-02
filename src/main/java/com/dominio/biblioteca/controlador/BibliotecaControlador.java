@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @AllArgsConstructor
 @Log4j2
 public class BibliotecaControlador {
@@ -23,9 +23,10 @@ public class BibliotecaControlador {
     }
 
     @GetMapping("/livros")
-    public ResponseEntity obterLivros(){
+    public String obterLivros(Model model){
         List<Livro> livros = servico.obterTodosLivros();
-        return ResponseEntity.ok(livros);
+        model.addAttribute("livros",livros);
+        return "todos_livros";
     }
 
 }
