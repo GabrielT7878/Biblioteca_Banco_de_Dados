@@ -1,4 +1,9 @@
 package com.dominio.biblioteca.repositorio;
 
-public interface LivroRepositorio {
+import com.dominio.biblioteca.entidade.Livro;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface LivroRepositorio extends JpaRepository<Livro,Integer> {
+
 }
+
