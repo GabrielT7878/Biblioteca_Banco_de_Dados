@@ -1,4 +1,4 @@
-package trabalho.biblioteca;
+package com.dominio.biblioteca;
 
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
