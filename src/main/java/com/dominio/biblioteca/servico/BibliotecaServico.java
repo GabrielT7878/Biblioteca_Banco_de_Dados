@@ -12,6 +12,6 @@ import java.util.List;
 public class BibliotecaServico {
     private final LivroRepositorio repositorio;
     public List<Livro> obterTodosLivros(){
-        return repositorio.findAll();
+        return repositorio.obterLivros();
     }
 }
