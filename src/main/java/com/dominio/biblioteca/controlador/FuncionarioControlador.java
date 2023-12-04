@@ -21,9 +21,10 @@ public class FuncionarioControlador {
     private final FuncionarioRepositorio repositorio;
 
     @GetMapping("/funcionarios")
-    public ResponseEntity obterFuncionarios(){
+    public String obterFuncionarios(Model model){
         List<Funcionario> funcionarios =  repositorio.obterFuncionarios();
-        return ResponseEntity.ok(funcionarios);
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
     }
 
 }

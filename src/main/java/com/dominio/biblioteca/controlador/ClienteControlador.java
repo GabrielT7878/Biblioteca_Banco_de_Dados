@@ -16,6 +16,11 @@ import java.util.List;
 @Log4j2
 @Controller
 public class ClienteControlador {
-    private final ClienteRepositorio repositorio;
-
+    private final ClienteServico servico;
+    @GetMapping("/clientes")
+    public String obterClientes(Model model){
+        List<Cliente> clientes = servico.obterClientes();
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
 }

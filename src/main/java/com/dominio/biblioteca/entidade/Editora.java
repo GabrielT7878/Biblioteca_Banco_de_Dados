@@ -17,7 +17,7 @@ import java.util.List;
 public class Editora {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_Editora")
+    @Column(name = "ID_Editora",insertable=false, updatable=false)
     private Integer idEditora;
 
     @Column(name = "Nome")
@@ -28,5 +28,13 @@ public class Editora {
 
     @Column(name = "Nome_Gerente")
     private String nomeGerente;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "ID_Editora")
+    private EndEditora endereco;
+
+    @OneToMany(mappedBy = "editora")
+    private List<TelefonesE> telefones;
 
 }

@@ -1,6 +1,5 @@
 package com.dominio.biblioteca.repositorio;
 
-import com.dominio.biblioteca.DTO.FuncionarioDTO;
 import com.dominio.biblioteca.entidade.Funcionario;
 import lombok.AllArgsConstructor;
 import org.springframework.data.jpa.repository.JpaRepository;
