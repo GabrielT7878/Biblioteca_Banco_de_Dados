@@ -1,6 +1,7 @@
 package com.dominio.biblioteca.controlador;
 
 import com.dominio.biblioteca.entidade.Livro;
+import com.dominio.biblioteca.entidade.Vende;
 import com.dominio.biblioteca.servico.BibliotecaServico;
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j2;
@@ -25,6 +26,13 @@ public class BibliotecaControlador {
         List<Livro> livros = servico.obterTodosLivros();
         model.addAttribute("livros",livros);
         return "livros";
+    }
+
+    @GetMapping("/vendas")
+    public String obterVendas(Model model){
+        List<Vende> vendas = servico.obterVendas();
+        model.addAttribute("vendas",vendas);
+        return "vendas";
     }
 
 }

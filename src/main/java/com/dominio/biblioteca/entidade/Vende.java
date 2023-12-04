@@ -8,6 +8,7 @@ import lombok.Setter;
 import org.springframework.data.annotation.*;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 @Setter
@@ -18,16 +19,16 @@ public class Vende {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Venda")
-    private Long id;
+    private Integer id;
 
     @Column(name = "ID_Pessoa", nullable = false)
-    private Long pessoaId;
+    private Integer pessoaId;
 
     @Column(name = "ID_Livro", nullable = false)
-    private Long livroId;
+    private Integer livroId;
 
-    @Column(name = "Data_Compra")
-    private Date dataCompra;
+    @Column(name = "Data_Venda")
+    private LocalDate dataVenda;
 
     @Column(name = "Quantidade", nullable = false)
     private Integer quantidade;
@@ -40,6 +41,5 @@ public class Vende {
     @JoinColumn(name = "ID_Livro", referencedColumnName = "ID_Livro", insertable = false, updatable = false)
     private Livro livro;
 
-    // Getters and setters
 }
 

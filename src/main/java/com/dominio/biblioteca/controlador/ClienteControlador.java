@@ -23,4 +23,11 @@ public class ClienteControlador {
         model.addAttribute("clientes",clientes);
         return "clientes";
     }
+
+    @GetMapping("/clientes/filtrarCliente")
+    public String buscarCliente(Model model,@RequestParam(name = "nome", required = false) String nome){
+        List<Cliente> clientes = servico.buscarCliente(nome);
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
 }

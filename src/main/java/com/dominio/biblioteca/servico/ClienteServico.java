@@ -15,4 +15,8 @@ public class ClienteServico {
     public List<Cliente> obterClientes(){
         return repositorio.obterClientes();
     }
+
+    public List<Cliente> buscarCliente(String nome){
+        return repositorio.buscarCliente(nome);
+    }
 }

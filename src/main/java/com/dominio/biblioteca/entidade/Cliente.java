@@ -15,7 +15,7 @@ import java.util.List;
 public class Cliente {
     @Id
     @Column(name = "ID_Pessoa")
-    private Integer id;
+    private Integer idPessoa;
 
     @Column(name = "Saldo")
     private Double saldo;

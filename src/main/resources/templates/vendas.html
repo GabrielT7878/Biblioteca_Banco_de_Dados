@@ -66,17 +66,17 @@
     <table>
         <tr>
             <th>#</th>
-            <th>Nome</th>
-            <th>Sobrenome</th>
-            <th>CPF</th>
-            <th>Saldo</th>
+            <th>Data Compra</th>
+            <th>Quantidade</th>
+            <th>Livro</th>
+            <th>Id Funcionario</th>
         </tr>
-        <tr th:each="cliente : ${clientes}">
-            <td><span th:text="${cliente.pessoa.idPessoa}"></span></td>
-            <td><span th:text="${cliente.pessoa.getNome()}"></span></td>
-            <td><span th:text="${cliente.pessoa.getUltimoNome()}"></span></td>
-            <td><span th:text="${cliente.pessoa.getCpf()}"></span></td>
-            <td><span th:text="${cliente.saldo}"></span></td>
+        <tr th:each="venda : ${vendas}">
+            <td><span th:text="${venda.id}"></span></td>
+            <td><span th:text="${venda.dataVenda}"></span></td>
+            <td><span th:text="${venda.quantidade}"></span></td>
+            <td><span th:text="${venda.livro.getNome()}"></span></td>
+            <td><span th:text="${venda.pessoa.getIdPessoa()}"></span></td>
         </tr>
     </table>
 </main>
