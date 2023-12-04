@@ -3,6 +3,13 @@ package com.dominio.biblioteca.entidade;
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
 import org.springframework.data.annotation.*;
+import lombok.Getter;
+import lombok.Setter;
+import org.springframework.data.annotation.*;
+
+import java.util.List;
+@Setter
+@Getter
 
 
 @Entity

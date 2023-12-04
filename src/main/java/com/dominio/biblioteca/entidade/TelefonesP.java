@@ -10,23 +10,18 @@ import org.springframework.data.annotation.*;
 import java.util.List;
 @Setter
 @Getter
-
-
 @Entity
-@Table(schema = "biblioteca",name = "editora")
-public class Editora {
+@Table(schema = "biblioteca",name = "telefones_p")
+public class TelefonesP {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_Editora")
-    private Integer idEditora;
+    @Column(name = "ID")
+    private Integer id;
 
-    @Column(name = "Nome")
-    private String nome;
+    @Column(name = "ID_Pessoa", nullable = false)
+    private Integer pessoaId;
 
-    @Column(name = "CNPJ")
-    private String cnpj;
-
-    @Column(name = "Nome_Gerente")
-    private String nomeGerente;
+    @Column(name = "Telefone")
+    private String telefone;
 
 }

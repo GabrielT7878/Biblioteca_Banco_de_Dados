@@ -2,7 +2,6 @@ package com.dominio.biblioteca.entidade;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
-import org.springframework.data.annotation.*;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.*;
@@ -10,23 +9,21 @@ import org.springframework.data.annotation.*;
 import java.util.List;
 @Setter
 @Getter
-
-
 @Entity
-@Table(schema = "biblioteca",name = "editora")
-public class Editora {
+@Table(schema = "biblioteca",name = "pessoa")
+public class Pessoa {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID_Editora")
-    private Integer idEditora;
+    @Column(name = "ID_Pessoa")
+    private Integer idPessoa;
 
-    @Column(name = "Nome")
+    @Column(name = "P_Nome", nullable = false)
     private String nome;
 
-    @Column(name = "CNPJ")
-    private String cnpj;
+    @Column(name = "Ult_Nome")
+    private String ultimoNome;
 
-    @Column(name = "Nome_Gerente")
-    private String nomeGerente;
+    @Column(name = "CPF", unique = true, nullable = false)
+    private String cpf;
 
 }
