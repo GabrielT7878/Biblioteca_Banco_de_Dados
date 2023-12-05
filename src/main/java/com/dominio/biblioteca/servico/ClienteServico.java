@@ -1,10 +1,15 @@
 package com.dominio.biblioteca.servico;
 
 
+
 import com.dominio.biblioteca.entidade.Cliente;
 import com.dominio.biblioteca.entidade.Pessoa;
+import com.dominio.biblioteca.entidade.TelefonesP;
 import com.dominio.biblioteca.repositorio.ClienteRepositorio;
+import com.dominio.biblioteca.repositorio.PessoaRepositorio;
+import com.dominio.biblioteca.repositorio.TelefonePRepositorio;
 import lombok.AllArgsConstructor;
+import org.hibernate.collection.spi.PersistentSortedMap;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,6 +18,8 @@ import java.util.List;
 @AllArgsConstructor
 public class ClienteServico {
     private final ClienteRepositorio repositorio;
+    private final PessoaRepositorio repositorioPessoa;
+    private  final TelefonePRepositorio repositorioTelefone;
     public List<Cliente> obterClientes(){
         return repositorio.obterClientes();
     }
@@ -54,10 +61,20 @@ public class ClienteServico {
             Cliente cliente = new Cliente();
     }
 
-    public void cadastrarCliente(Pessoa cliente){
-        Cliente novoCliente = new Cliente();
-        novoCliente.setPessoa(cliente);
-        novoCliente.setSaldo(0.0);
-        repositorio.save(novoCliente);
+    public void cadastrarCliente(String nome, String ultimoNome,String cpf, String telefone){
+        Pessoa pessoa  = new Pessoa();
+        Cliente clienteNovo = new Cliente();
+        TelefonesP telefonesP = new TelefonesP();
+        pessoa.setCpf(cpf);
+        pessoa.setNome(nome);
+        pessoa.setUltimoNome(ultimoNome);
+        repositorioPessoa.save(pessoa);
+        telefonesP.setTelefone(telefone);
+        telefonesP.setPessoa(pessoa);
+        telefonesP.setPessoaId(pessoa.getIdPessoa());
+        repositorioTelefone.save(telefonesP);
+        clienteNovo.setPessoa(pessoa);
+        clienteNovo.setSaldo(0.0);
+        repositorio.save(clienteNovo);
     }
 }

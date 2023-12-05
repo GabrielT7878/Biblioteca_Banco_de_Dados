@@ -6,12 +6,13 @@ import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.*;
 
+import java.io.Serializable;
 import java.util.List;
 @Setter
 @Getter
 @Entity
 @Table(schema = "biblioteca",name = "pessoa")
-public class Pessoa {
+public class Pessoa implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "ID_Pessoa")
@@ -29,8 +30,8 @@ public class Pessoa {
     @OneToMany(mappedBy = "pessoa")
     private List<TelefonesP> telefones;
 
-    @OneToOne
-    @MapsId
-    @JoinColumn(name = "ID_Pessoa")
-    private EndPessoa endPessoa;
+//    @OneToOne
+//    @MapsId
+//    @JoinColumn(name = "ID_Pessoa")
+//    private EndPessoa endPessoa;
 }

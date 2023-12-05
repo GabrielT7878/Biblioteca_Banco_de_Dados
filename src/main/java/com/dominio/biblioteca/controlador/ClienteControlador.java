@@ -3,6 +3,7 @@ package com.dominio.biblioteca.controlador;
 import com.dominio.biblioteca.entidade.Cliente;
 import com.dominio.biblioteca.entidade.Pessoa;
 import com.dominio.biblioteca.repositorio.ClienteRepositorio;
+import org.hibernate.sql.exec.spi.StandardEntityInstanceResolver;
 import org.springframework.stereotype.Controller;
 import com.dominio.biblioteca.servico.*;
 import lombok.AllArgsConstructor;
@@ -101,9 +102,9 @@ public class ClienteControlador {
     }
 
     @PostMapping("/clientes/cadastrar")
-    public String cadastrarCliente(@RequestBody Pessoa cliente) {
-        servico.cadastrarCliente(cliente);
-        return "adicionarCliente";
+    public String cadastrarCliente(@RequestParam String nome, @RequestParam String ultimoNome, @RequestParam String cpf, @RequestParam String telefones) {
+        servico.cadastrarCliente(nome,ultimoNome,cpf,telefones);
+        return "redirect:/clientes";
     }
 
 
