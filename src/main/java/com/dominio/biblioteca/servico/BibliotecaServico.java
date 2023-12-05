@@ -1,6 +1,7 @@
 package com.dominio.biblioteca.servico;
 
 import com.dominio.biblioteca.entidade.Livro;
+import com.dominio.biblioteca.entidade.MediaEditora;
 import com.dominio.biblioteca.entidade.Vende;
 import com.dominio.biblioteca.repositorio.BibliotecaRepositorio;
 import lombok.AllArgsConstructor;
@@ -15,6 +16,10 @@ public class BibliotecaServico {
     private final BibliotecaRepositorio repositorio;
     public List<Livro> obterTodosLivros(){
         return repositorio.obterLivros();
+    }
+
+    public Integer buscarQuantidadeTotalLivros(){
+        return repositorio.buscarTotalLivros();
     }
 
     public List<Vende> obterVendas(){
@@ -40,4 +45,13 @@ public class BibliotecaServico {
             repositorio.delete(livro.get());
         }
     }
+
+    public Integer buscarTotalLivros(){return repositorio.buscarTotalLivros();}
+
+    public Integer buscarMediaLivros(){return repositorio.buscarMediaLivros();}
+
+    public List<MediaEditora> buscarMediaLivrosPorEditora(){return repositorio.buscarMediaLivrosPorEditora();}
+
+    public List<MediaEditora> buscarMediaLivrosPorEditoraApenasX(Integer x){return repositorio.buscarMediaLivrosPorEditoraApenasMaisQueX(x);}
+
 }

@@ -26,4 +26,8 @@ public class FuncionarioServico {
     public List<Funcionario> buscarFuncionarioSalarioMaiorQueAlgumTempoX(Integer x){return repositorio.buscarFuncionarioSalarioMaiorQueAlgumTempoX(x);}
 
     public List<Funcionario> buscarFuncionarioSalarioMaiorQueTodosTempoX(Integer x){return repositorio.buscarFuncionarioSalarioMaiorQueTodosTempoX(x);}
+
+    public Double buscarMediaSalario(){return repositorio.buscarMediaSalario();}
+
+    public Double buscarTotalSalario(){return repositorio.buscarTotalSalario();}
 }

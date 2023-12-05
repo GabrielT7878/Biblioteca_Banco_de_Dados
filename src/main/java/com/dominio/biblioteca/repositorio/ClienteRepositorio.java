@@ -53,4 +53,12 @@ public interface ClienteRepositorio extends JpaRepository<Cliente,Integer> {
     @Query("select CONCAT(c.pessoa.nome, ' ', c.pessoa.ultimoNome) from Cliente c")
     List<String> concatenarNomeSobrenome(String nome);
 
+// (Exemplo de função agregada) Encontrar quantidade total de clientes
+    @Query("select count(c.idPessoa) as valor from Cliente as c")
+    Integer buscarTotalClientes();
+
+    // (Exemplo de função agregada) Encontrar media de saldo de clientes
+    @Query("select avg(c.saldo) as valor from Cliente as c")
+    Double buscarMediaSaldo();
+
 }

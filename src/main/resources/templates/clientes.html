@@ -1,131 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-            color: #333;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1, h2 {
-            margin: 0;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        form {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        input[type="text"] {
-            width: 100%;
-            padding: 8px;
-            margin-bottom: 10px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #333;
-            color: #fff;
-            padding: 8px 15px;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background-color: #555;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 12px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #333;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #e6e6e6;
-        }
-    </style>
-
+    <link rel="stylesheet" href="" th:href="@{style2.css}">
+     
 </head>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca</title>
-    <style>
-        /* Seu estilo permanece o mesmo, sem alterações aqui */
-        /* ... */
-    </style>
 </head>
 <body>
 <header>
+    <a id="home1" href="http://localhost:8080/"><img src="" th:src="@{6490332.png}"></a>
     <h1>Todos Clientes</h1>
 </header>
 <main>
     <h2>Buscar Cliente</h2>
 
-    <form th:action="@{/clientes/filtrarCliente}" method="get">
+    <div class="form-container">
+        <form th:action="@{/clientes/filtrarCliente}" method="get">
+            <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente">
+            <button type="submit">Buscar</button>
+        </form>
+        <form th:action="@{/clientes/SaldoVariavel}" method="get">
+            <label  for="valor">Filtrar por Saldo:</label>
+            <select id="valor" name="valor">
+                <option value="500">Saldo Maior Que 500</option>
+                <option value="1000">Saldo Maior Que 1000</option>
+                <option value="0">Saldo Positivo</option>
+                <option value="-1">Saldo Negativo</option>
+            </select>
 
-        <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente">
-        <button type="submit">Buscar</button>
-    </form>
-    <form th:action="@{/clientes/adicionarCliente}" method="get">
-        <button type="submit"> Cadastrar Cliente</button>
-    </form>
-    <form th:action="@{/clientes/SaldoVariavel}" method="get">
-
-        <label for="valor">Filtrar por Saldo:</label>
-        <select id="valor" name="valor">
-            <!-- Adicionados os valores aos options -->
-            <option value="500">Saldo Maior Que 500</option>
-            <option value="1000">Saldo Maior Que 1000</option>
-            <option value="0">Saldo Positivo</option>
-            <option value="-1">Saldo Negativo</option>
-        </select>
-
-        <button type="submit">Filtrar</button>
-    </form>
-
+        </form>
+        <button th:action="@{/clientes/SaldoVariavel}" method="get" id="Filtrar" type="submit">Filtrar</button>
+    </div>
     <form th:action="@{/clientes/ClientesSaldoMaiorAlgumID}" method="get">
 
         <label for="id">Filtrar clientes com saldo maior que algum cliente de ID variável:</label>
@@ -150,6 +61,10 @@
         <button type="submit">Ordenar por Saldo</button>
     </form>
 
+    <form th:action="@{/clientes/adicionarCliente}" method="get">
+        <button type="submit"> Cadastrar Cliente</button>
+    </form>
+</button> 
     <table>
         <tr>
             <th>#</th>
@@ -168,6 +83,13 @@
             <td><span th:text="${cliente.pessoa.getTelefones().get(0).getTelefone()}"></span></td>
         </tr>
     </table>
+
+    <span>Total Clientes:</span>
+    <span th:text="${totalClientes}"></span>
+    <br>
+    <span>Media Saldo:</span>
+    <span th:text="${mediaClientes}"></span>
+
 </main>
 </body>
 </html>

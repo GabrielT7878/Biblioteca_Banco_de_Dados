@@ -77,4 +77,8 @@ public class ClienteServico {
         clienteNovo.setSaldo(0.0);
         repositorio.save(clienteNovo);
     }
+
+    public Integer buscarTotalClientes(){return repositorio.buscarTotalClientes();}
+
+    public Double buscarMediaSaldo(){return repositorio.buscarMediaSaldo();}
 }

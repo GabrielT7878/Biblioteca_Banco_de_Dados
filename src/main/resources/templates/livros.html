@@ -1,64 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
 <head>
     <meta charset="UTF-8">
     <title>Biblitoeca</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
 
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #333;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #e6e6e6;
-        }
-    </style>
+    <link rel="stylesheet" href="" th:href="@{style2.css}">
 </head>
 <body>
 <header>
+    <a id="home1" href="http://localhost:8080/"><img src="" th:src="@{6490332.png}"></a>
     <h1>Todos os Livros</h1>
 </header>
 <main>
@@ -68,12 +18,9 @@
         <button type="submit">Buscar</button>
     </form>
 
-    <form th:action="@{/livrosSaldoNegativo}" method="get">
-        <button type="submit">Filtrar por livros vendidos para clientes com saldo negativo</button>
-    </form>
-
     <form th:action="@{/buscarLivrosVendidosNaoComprados}" method="get">
         <button type="submit">Filtrar por livros vendidos e nunca comprados</button>
+        <button  th:action="@{/livrosSaldoNegativo}" method="get" id="livro" type="submit">Filtrar por livros vendidos para clientes com saldo negativo</button>
     </form>
 
     <form th:action="@{/ordenarLivrosPorNome}" method="get">
@@ -91,7 +38,10 @@
 
         <input type="text" id="nome" name="id" placeholder="Id do Livro a ser removido">
         <button type="submit">Remover</button>
+
+    </button> 
     </form>
+    
     <table>
         <tr>
             <th>#</th>
@@ -112,6 +62,12 @@
             <td><span th:text="${livro.editora.getNome()}"></span></td>
         </tr>
     </table>
+
+    <span>Total Livros:</span>
+    <span th:text="${totalLivros}"></span>
+    <br>
+    <span>Quantidade Media Livros:</span>
+    <span th:text="${media}"></span>
 </main>
 </body>
 </html>

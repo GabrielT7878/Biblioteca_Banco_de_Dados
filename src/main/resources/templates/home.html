@@ -1,76 +1,26 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+    <link rel="stylesheet" href="" th:href="@{style2.css}">
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f5f5f5;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        li {
-            margin-bottom: 10px;
-        }
-
-        a {
-            text-decoration: none;
-            color: #444;
-            font-weight: bold;
-            padding: 10px 20px;
-            display: inline-block;
-            border: 2px solid #444;
-            border-radius: 5px;
-            background-color: #fff;
-            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
-        }
-
-        a:hover {
-            background-color: #333;
-            color: #fff;
-        }
-    </style>
 </head>
 <body>
 <header>
+
+    <a id="home1" href="http://localhost:8080/"><img src="" th:src="@{6490332.png}"></a>
     <h1>Biblioteca</h1>
 </header>
-<main>
-    <ul>
-        <li><a href="http://localhost:8080/livros">Livros</a></li>
-        <li><a href="http://localhost:8080/funcionarios">Funcionarios</a></li>
-        <li><a href="http://localhost:8080/editoras">Editoras</a></li>
-        <li><a href="http://localhost:8080/clientes">Clientes</a></li>
-        <li><a href="http://localhost:8080/vendas">Vendas</a></li>
-    </ul>
+<main id="menu">
+    <nav>
+        <ul>
+            <li><a href="http://localhost:8080/livros">Livros</a></li>
+            <li><a href="http://localhost:8080/funcionarios">Funcionarios</a></li>
+            <li><a href="http://localhost:8080/editoras">Editoras</a></li>
+            <li><a href="http://localhost:8080/clientes">Clientes</a></li>
+            <li><a href="http://localhost:8080/vendas">Vendas</a></li>
+        </ul>
+    </nav>
 </main>
 </body>
 </html>

@@ -30,8 +30,4 @@ public class Pessoa implements Serializable {
     @OneToMany(mappedBy = "pessoa")
     private List<TelefonesP> telefones;
 
-//    @OneToOne
-//    @MapsId
-//    @JoinColumn(name = "ID_Pessoa")
-//    private EndPessoa endPessoa;
 }

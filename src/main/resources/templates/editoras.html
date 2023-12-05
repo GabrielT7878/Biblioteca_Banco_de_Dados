@@ -1,68 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="https://www.thymeleaf.org/">
+
 <head>
     <meta charset="UTF-8">
     <title>Biblioteca</title>
-    <style>
-        body {
-            font-family: 'Arial', sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            padding: 20px;
-        }
-
-        h1 {
-            margin: 0;
-        }
-
-        main {
-            max-width: 800px;
-            margin: 20px auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 5px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 20px;
-        }
-
-        th, td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-
-        th {
-            background-color: #333;
-            color: #fff;
-        }
-
-        tr:nth-child(even) {
-            background-color: #f9f9f9;
-        }
-
-        tr:hover {
-            background-color: #e6e6e6;
-        }
-    </style>
-
+    <link rel="stylesheet" href="" th:href="@{style3.css}">
 </head>
 <body>
 <header>
+    <a id="home1" href="http://localhost:8080/"><img src="" th:src="@{6490332.png}"></a>
     <h1>Todas Editoras</h1>
 </header>
 <main>
+<div>
     <form action="/editoras/adicionarTelefone" method="post">
 
         <label for="idEditora">ID da Editora:</label>
@@ -78,7 +28,7 @@
         <input type="text" id="nome" name="nome" placeholder="Digite o nome do gerente">
         <button type="submit">Buscar</button>
     </form>
-
+</div>
     <form th:action="@{/editoras/ordenarPorNome}" method="get">
         <button type="submit">Ordenar por Nome</button>
     </form>
@@ -90,6 +40,7 @@
     <form th:action="@{/editoras/ordenarPorCNPJ}" method="get">
         <button type="submit">Ordenar por CNPJ</button>
     </form>
+    </button>
     <table>
         <tr>
             <th>#</th>

@@ -1,6 +1,7 @@
 package com.dominio.biblioteca.controlador;
 
 import com.dominio.biblioteca.entidade.Livro;
+import com.dominio.biblioteca.entidade.MediaEditora;
 import com.dominio.biblioteca.entidade.Vende;
 import com.dominio.biblioteca.servico.BibliotecaServico;
 import lombok.AllArgsConstructor;
@@ -24,6 +25,10 @@ public class BibliotecaControlador {
     @GetMapping("/livros")
     public String obterLivros(Model model){
         List<Livro> livros = servico.obterTodosLivros();
+        Integer totalLivros = servico.buscarQuantidadeTotalLivros();
+        model.addAttribute("totalLivros",totalLivros);
+        Integer media =  servico.buscarMediaLivros();
+        model.addAttribute("media",media);
         model.addAttribute("livros",livros);
         return "livros";
     }
@@ -82,6 +87,8 @@ public class BibliotecaControlador {
         servico.removerLivro(id);
         return "redirect:livros";
     }
+
+
 
 
 }

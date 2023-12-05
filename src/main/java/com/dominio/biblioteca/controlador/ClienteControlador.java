@@ -22,6 +22,10 @@ public class ClienteControlador {
     @GetMapping("/clientes")
     public String obterClientes(Model model){
         List<Cliente> clientes = servico.obterClientes();
+        Double mediaCLientes = servico.buscarMediaSaldo();
+        Integer totalClientes = servico.buscarTotalClientes();
+        model.addAttribute("mediaClientes",mediaCLientes);
+        model.addAttribute("totalClientes",totalClientes);
         model.addAttribute("clientes",clientes);
         return "clientes";
     }

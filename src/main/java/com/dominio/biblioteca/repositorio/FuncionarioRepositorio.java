@@ -25,11 +25,11 @@ public interface FuncionarioRepositorio extends JpaRepository<Funcionario,Intege
 
     // (Exemplo de função agregada) Encontrar media de salario dos funcionarios
     @Query("select avg(f.salario) from Funcionario f")
-    Integer buscarMediaSalario();
+    Double buscarMediaSalario();
 
     // (Exemplo de função agregada) Encontrar total de salario dos funcionarios
     @Query("select sum(f.salario) from Funcionario f")
-    Integer buscarTotalSalario();
+    Double buscarTotalSalario();
 
     // (Exemplo de ordenação) Ordenar funcionarios por nome
     @Query("select f from Funcionario f order by f.pessoa.nome")
@@ -52,4 +52,6 @@ public interface FuncionarioRepositorio extends JpaRepository<Funcionario,Intege
     // com tempo na empresa maior que x
     @Query("select f from Funcionario f where f.salario > all (select f.salario from Funcionario f where f.tempoNaEmpresa > :x)")
     List<Funcionario> buscarFuncionarioSalarioMaiorQueTodosTempoX(Integer x);
+
+    // (Exemplo de função agregada) Encontrar media de salario dos funcionarios
 }

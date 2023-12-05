@@ -23,6 +23,10 @@ public class FuncionarioControlador {
     @GetMapping("/funcionarios")
     public String obterFuncionarios(Model model){
         List<Funcionario> funcionarios =  servico.obterFuncionarios();
+        Double totalSalario = servico.buscarTotalSalario();
+        Double mediaSalario = servico.buscarMediaSalario();
+        model.addAttribute("totalSalario",totalSalario);
+        model.addAttribute("mediaSalario",mediaSalario);
         model.addAttribute("funcionarios",funcionarios);
         return "funcionarios";
     }
@@ -75,6 +79,7 @@ public class FuncionarioControlador {
         model.addAttribute("funcionarios",funcionarios);
         return "funcionarios";
     }
+
 
 
 }
