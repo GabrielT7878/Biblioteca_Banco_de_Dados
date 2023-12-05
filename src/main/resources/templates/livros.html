@@ -62,6 +62,36 @@
     <h1>Todos os Livros</h1>
 </header>
 <main>
+    <form th:action="@{/livrosQuantidadeMaiorQueX}" method="get">
+        <label for="qntLivros">Filtrar por Quantidade minima:</label>
+        <input type="text" id="qntLivros" name="valor" placeholder="Digite a quantidade">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <form th:action="@{/livrosSaldoNegativo}" method="get">
+        <button type="submit">Filtrar por livros vendidos para clientes com saldo negativo</button>
+    </form>
+
+    <form th:action="@{/buscarLivrosVendidosNaoComprados}" method="get">
+        <button type="submit">Filtrar por livros vendidos e nunca comprados</button>
+    </form>
+
+    <form th:action="@{/ordenarLivrosPorNome}" method="get">
+        <button type="submit">Ordenar livros por Nome</button>
+    </form>
+
+    <form th:action="@{/ordenarLivrosPorAutor}" method="get">
+        <button type="submit">Ordenar livros por Autor</button>
+    </form>
+
+    <form th:action="@{/ordenarLivrosPorEditora}" method="get">
+        <button type="submit">Ordenar livros por Editora</button>
+    </form>
+    <form th:action="@{/removerLivro}" method="post">
+
+        <input type="text" id="nome" name="id" placeholder="Id do Livro a ser removido">
+        <button type="submit">Remover</button>
+    </form>
     <table>
         <tr>
             <th>#</th>

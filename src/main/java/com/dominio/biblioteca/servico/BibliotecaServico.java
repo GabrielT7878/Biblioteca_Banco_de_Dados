@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @AllArgsConstructor
@@ -18,5 +19,25 @@ public class BibliotecaServico {
 
     public List<Vende> obterVendas(){
         return repositorio.obterVendas();
+    }
+    public List<Livro> buscarLivrosQuantidadeMaiorQueX(Integer x){return repositorio.buscarLivrosQuantidadeMaiorQueX(x);}
+
+    public List<Livro> buscarLivrosSaldoNegativo(){
+        return repositorio.buscarLivrosSaldoNegativo();
+    }
+
+    public List<Livro> ordenarLivrosPorNome(){return repositorio.ordernarLivrosPorNome();}
+
+    public List<Livro> ordenarLivrosPorAutor(){return repositorio.ordernarLivrosPorAutor();}
+
+    public List<Livro> ordenarLivrosPorEditora(){return repositorio.ordernarLivrosPorEditora();}
+
+    public List<Livro> buscarLivrosVendidosNaoComprados(){return repositorio.buscarLivrosVendidosNaoComprados();}
+
+    public void removerLivro(Integer id){
+        Optional<Livro> livro = repositorio.findById(id);
+        if(!livro.isEmpty()){
+            repositorio.delete(livro.get());
+        }
     }
 }

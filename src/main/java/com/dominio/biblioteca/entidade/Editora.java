@@ -11,7 +11,6 @@ import java.util.List;
 @Setter
 @Getter
 
-
 @Entity
 @Table(schema = "biblioteca",name = "editora")
 public class Editora {

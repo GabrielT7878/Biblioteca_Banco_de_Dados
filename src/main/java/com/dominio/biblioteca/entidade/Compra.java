@@ -40,5 +40,4 @@ public class Compra {
     @JoinColumn(name = "ID_Livro", referencedColumnName = "ID_Livro", insertable = false, updatable = false)
     private Livro livro;
 
-    // Getters and setters
 }

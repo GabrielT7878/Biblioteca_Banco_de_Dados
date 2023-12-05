@@ -35,4 +35,53 @@ public class BibliotecaControlador {
         return "vendas";
     }
 
+    @GetMapping("/livrosQuantidadeMaiorQueX")
+    public String buscarLivros(Model model,@RequestParam(name = "valor", required = true) Integer x){
+        List<Livro> livros = servico.buscarLivrosQuantidadeMaiorQueX(x);
+        model.addAttribute("livros",livros);
+        return "livros";
+    }
+
+    @GetMapping("/livrosSaldoNegativo")
+    public String buscarLivrosSaldoNegativo(Model model){
+        List<Livro> livros = servico.buscarLivrosSaldoNegativo();
+        model.addAttribute("livros",livros);
+        return "livros";
+    }
+
+    @GetMapping("/ordenarLivrosPorNome")
+    public String ordenarLivrosPorNome(Model model){
+        List<Livro> livros = servico.ordenarLivrosPorNome();
+        model.addAttribute("livros",livros);
+        return "livros";
+    }
+
+    @GetMapping("/ordenarLivrosPorAutor")
+    public String ordenarLivrosPorAutor(Model model){
+        List<Livro> livros = servico.ordenarLivrosPorAutor();
+        model.addAttribute("livros",livros);
+        return "livros";
+    }
+
+    @GetMapping("/ordenarLivrosPorEditora")
+    public String ordenarLivrosPorEditora(Model model){
+        List<Livro> livros = servico.ordenarLivrosPorEditora();
+        model.addAttribute("livros",livros);
+        return "livros";
+    }
+
+    @GetMapping("/buscarLivrosVendidosNaoComprados")
+    public String buscarLivrosVendidosNaoComprados(Model model){
+        List<Livro> livros = servico.buscarLivrosVendidosNaoComprados();
+        model.addAttribute("livros",livros);
+        return "livros";
+    }
+
+    @PostMapping("/removerLivro")
+    public String removerLivro(Model model,@RequestParam(required = true) Integer id ){
+        servico.removerLivro(id);
+        return "redirect:livros";
+    }
+
+
 }

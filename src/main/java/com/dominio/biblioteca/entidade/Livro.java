@@ -36,4 +36,10 @@ public class Livro {
     @JoinColumn(name = "ID_Editora")
     private Editora editora;
 
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
+    private List<Compra> compras;
+
+    @OneToMany(mappedBy = "livro", cascade = CascadeType.REMOVE)
+    private List<Vende> vendas;
+
 }

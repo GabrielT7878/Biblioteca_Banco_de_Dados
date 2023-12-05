@@ -18,13 +18,63 @@ import java.util.List;
 @Log4j2
 @Controller
 public class FuncionarioControlador {
-    private final FuncionarioRepositorio repositorio;
+    private final FuncionarioServico servico;
 
     @GetMapping("/funcionarios")
     public String obterFuncionarios(Model model){
-        List<Funcionario> funcionarios =  repositorio.obterFuncionarios();
+        List<Funcionario> funcionarios =  servico.obterFuncionarios();
         model.addAttribute("funcionarios",funcionarios);
         return "funcionarios";
     }
+
+    @GetMapping("/funcionarios/buscarSalarioMaiorQueX")
+    public String buscarFuncionarioSalarioMaiorQueX(Model model,@RequestParam(name = "valor", required = true) Double x){
+        List<Funcionario> funcionarios =  servico.buscarFuncionarioSalarioMaiorQueX(x);
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
+    @GetMapping("/funcionarios/buscarTempoMaiorQueX")
+    public String buscarFuncionarioTempoMaiorQueX(Model model,@RequestParam(name = "tempo", required = true) Integer x){
+        List<Funcionario> funcionarios =  servico.buscarFuncionarioTempoMaiorQueX(x);
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
+    @GetMapping("/funcionarios/ordernarPorNome")
+    public String ordenarFuncionarioPorNome(Model model){
+        List<Funcionario> funcionarios =  servico.ordenarFuncionarioPorNome();
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
+    @GetMapping("/funcionarios/ordernarPorSalarioDesc")
+    public String ordenarFuncionarioPorSalarioDesc(Model model){
+        List<Funcionario> funcionarios =  servico.ordenarFuncionarioPorSalarioDesc();
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
+    @GetMapping("/funcionarios/ordernarPorSalarioCres")
+    public String ordenarFuncionarioPorSalarioCres(Model model){
+        List<Funcionario> funcionarios =  servico.ordenarFuncionarioPorSalarioCres();
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
+    @GetMapping("/funcionarios/buscarSalarioMaiorQueAlgumTempoX")
+    public String buscarFuncionarioSalarioMaiorQueAlgumTempoX(Model model,@RequestParam(name = "tempo", required = true) Integer x){
+        List<Funcionario> funcionarios =  servico.buscarFuncionarioSalarioMaiorQueAlgumTempoX(x);
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
+    @GetMapping("/funcionarios/buscarSalarioMaiorQueTodosTempoX")
+    public String buscarFuncionarioSalarioMaiorQueTodosTempoX(Model model,@RequestParam(name = "tempo", required = true) Integer x){
+        List<Funcionario> funcionarios =  servico.buscarFuncionarioSalarioMaiorQueTodosTempoX(x);
+        model.addAttribute("funcionarios",funcionarios);
+        return "funcionarios";
+    }
+
 
 }

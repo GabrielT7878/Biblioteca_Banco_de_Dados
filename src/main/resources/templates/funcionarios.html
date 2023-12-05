@@ -63,6 +63,59 @@
     <h1>Todos os Funcionarios</h1>
 </header>
 <main>
+    <form th:action="@{/funcionarios/buscarSalarioMaiorQueX}" method="get">
+
+        <label for="valorSalario">Filtrar por Salario:</label>
+        <select id="valorSalario" name="valor">
+            <!-- Adicionados os valores aos options -->
+            <option value="10000">Salario Maior Que 10000</option>
+            <option value="25000">Salario Maior Que 25000</option>
+            <option value="50000">Salario Maior Que 50000</option>
+            <option value="100000">Salario Maior Que 100000</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <form th:action="@{/funcionarios/buscarTempoMaiorQueX}" method="get">
+
+        <label for="valorTempo">Filtrar por Tempo na Empresa:</label>
+        <select id="valorTempo" name="tempo">
+            <!-- Adicionados os valores aos options -->
+            <option value="1">Tempo maior que 1 ano</option>
+            <option value="2">Tempo maior que 2 anos</option>
+            <option value="5">Tempo maior que 5 anos</option>
+            <option value="10">Tempo maior que 10 anos</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <form th:action="@{/funcionarios/buscarSalarioMaiorQueTodosTempoX}" method="get">
+
+        <label for="valorTempo2">Filtrar por salario maior que o de todos funcionarios com tempo variável:</label>
+        <select id="valorTempo2" name="tempo">
+            <!-- Adicionados os valores aos options -->
+            <option value="1">Tempo maior que 1 ano</option>
+            <option value="2">Tempo maior que 2 anos</option>
+            <option value="5">Tempo maior que 5 anos</option>
+            <option value="10">Tempo maior que 10 anos</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <form th:action="@{/funcionarios/ordernarPorNome}" method="get">
+        <button type="submit">Ordenar Por Nome</button>
+    </form>
+
+    <form th:action="@{/funcionarios/ordernarPorSalarioDesc}" method="get">
+        <button type="submit">Ordenar Por Salário (Decrescente)</button>
+    </form>
+
+    <form th:action="@{/funcionarios/ordernarPorSalarioCres}" method="get">
+        <button type="submit">Ordenar Por Salário (Crescente)</button>
+    </form>
     <table>
         <tr>
             <th>#</th>

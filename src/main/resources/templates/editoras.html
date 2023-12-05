@@ -63,6 +63,33 @@
     <h1>Todas Editoras</h1>
 </header>
 <main>
+    <form action="/editoras/adicionarTelefone" method="post">
+
+        <label for="idEditora">ID da Editora:</label>
+        <input type="text" id="idEditora" name="idEditora" required>
+
+        <label for="numero">Número do Telefone:</label>
+        <input type="text" id="numero" name="numero" required>
+
+        <button type="submit">Adicionar Telefone</button>
+    </form>
+    <form th:action="@{/editoras/buscarPorGerente}" method="get">
+        <label for="nome">Filtrar por Gerente:</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o nome do gerente">
+        <button type="submit">Buscar</button>
+    </form>
+
+    <form th:action="@{/editoras/ordenarPorNome}" method="get">
+        <button type="submit">Ordenar por Nome</button>
+    </form>
+
+    <form th:action="@{/editoras/ordenarPorCidade}" method="get">
+        <button type="submit">Ordenar por Cidade</button>
+    </form>
+
+    <form th:action="@{/editoras/ordenarPorCNPJ}" method="get">
+        <button type="submit">Ordenar por CNPJ</button>
+    </form>
     <table>
         <tr>
             <th>#</th>

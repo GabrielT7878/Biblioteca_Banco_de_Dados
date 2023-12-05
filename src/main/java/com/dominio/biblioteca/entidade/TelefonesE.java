@@ -22,6 +22,9 @@ public class TelefonesE {
     @Column(name = "Telefone", length = 20)
     private String telefone;
 
+    @Column(name = "ID_Editora")
+    private Integer idEditora;
+
     @ManyToOne
     @JoinColumn(name = "ID_Editora", referencedColumnName = "ID_Editora", insertable = false, updatable = false)
     private Editora editora;

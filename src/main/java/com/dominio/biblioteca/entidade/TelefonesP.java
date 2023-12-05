@@ -24,4 +24,9 @@ public class TelefonesP {
     @Column(name = "Telefone")
     private String telefone;
 
+    @ManyToOne
+    @JoinColumn(name = "ID_Pessoa", referencedColumnName = "ID_Pessoa", insertable = false, updatable = false)
+    private Pessoa pessoa;
+
+
 }

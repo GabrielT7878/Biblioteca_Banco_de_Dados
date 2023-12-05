@@ -87,6 +87,16 @@
     </style>
 
 </head>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Biblioteca</title>
+    <style>
+        /* Seu estilo permanece o mesmo, sem alterações aqui */
+        /* ... */
+    </style>
+</head>
 <body>
 <header>
     <h1>Todos Clientes</h1>
@@ -97,8 +107,47 @@
     <form th:action="@{/clientes/filtrarCliente}" method="get">
 
         <input type="text" id="nome" name="nome" placeholder="Digite o nome do cliente">
-
         <button type="submit">Buscar</button>
+    </form>
+    <form th:action="@{/clientes/adicionarCliente}" method="get">
+        <button type="submit"> Cadastrar Cliente</button>
+    </form>
+    <form th:action="@{/clientes/SaldoVariavel}" method="get">
+
+        <label for="valor">Filtrar por Saldo:</label>
+        <select id="valor" name="valor">
+            <!-- Adicionados os valores aos options -->
+            <option value="500">Saldo Maior Que 500</option>
+            <option value="1000">Saldo Maior Que 1000</option>
+            <option value="0">Saldo Positivo</option>
+            <option value="-1">Saldo Negativo</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <form th:action="@{/clientes/ClientesSaldoMaiorAlgumID}" method="get">
+
+        <label for="id">Filtrar clientes com saldo maior que algum cliente de ID variável:</label>
+        <select id="id" name="valor">
+            <!-- Adicionados os valores aos options -->
+            <option value="1">ID maior que 1</option>
+            <option value="5">ID maior que 5</option>
+        </select>
+
+        <button type="submit">Filtrar</button>
+    </form>
+
+    <form th:action="@{/clientes/ClientesCompraOuVenda}" method="get">
+        <button type="submit">Filtrar clientes que compraram OU venderam livros</button>
+    </form>
+
+    <form th:action="@{/clientes/ClientesCompraEVenda}" method="get">
+        <button type="submit">Filtrar clientes que compraram E venderam livros</button>
+    </form>
+
+    <form th:action="@{/clientes/OrdenarPorSaldo}" method="get">
+        <button type="submit">Ordenar por Saldo</button>
     </form>
 
     <table>
@@ -108,6 +157,7 @@
             <th>Sobrenome</th>
             <th>CPF</th>
             <th>Saldo</th>
+            <th>Telefones</th>
         </tr>
         <tr th:each="cliente : ${clientes}">
             <td><span th:text="${cliente.pessoa.idPessoa}"></span></td>
@@ -115,6 +165,7 @@
             <td><span th:text="${cliente.pessoa.getUltimoNome()}"></span></td>
             <td><span th:text="${cliente.pessoa.getCpf()}"></span></td>
             <td><span th:text="${cliente.saldo}"></span></td>
+            <td><span th:text="${cliente.pessoa.getTelefones().get(0).getTelefone()}"></span></td>
         </tr>
     </table>
 </main>

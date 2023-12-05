@@ -26,4 +26,11 @@ public class Pessoa {
     @Column(name = "CPF", unique = true, nullable = false)
     private String cpf;
 
+    @OneToMany(mappedBy = "pessoa")
+    private List<TelefonesP> telefones;
+
+    @OneToOne
+    @MapsId
+    @JoinColumn(name = "ID_Pessoa")
+    private EndPessoa endPessoa;
 }

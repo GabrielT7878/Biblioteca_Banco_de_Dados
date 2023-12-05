@@ -1,6 +1,7 @@
 package com.dominio.biblioteca.controlador;
 
 import com.dominio.biblioteca.entidade.Cliente;
+import com.dominio.biblioteca.entidade.Pessoa;
 import com.dominio.biblioteca.repositorio.ClienteRepositorio;
 import org.springframework.stereotype.Controller;
 import com.dominio.biblioteca.servico.*;
@@ -30,4 +31,80 @@ public class ClienteControlador {
         model.addAttribute("clientes",clientes);
         return "clientes";
     }
+
+    @GetMapping("/clientes/SaldoPositivo")
+    public String buscarClienteSaldoPositivo(Model model){
+        List<Cliente> clientes = servico.buscarClienteSaldoPositivo();
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/SaldoNegativo")
+    public String buscarClienteSaldoNegativo(Model model){
+        List<Cliente> clientes = servico.buscarClienteSaldoNegativo();
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/SaldoVariavel")
+    public String buscarClienteSaldoMaiorQueX(Model model,@RequestParam(name = "valor", required = true) Double var){
+        List<Cliente> clientes = servico.buscarClienteSaldoMaiorQueX(var);
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/OrdenarPorSaldo")
+    public String ordenarPorSaldo(Model model){
+        List<Cliente> clientes = servico.ordenarPorSaldo();
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/ClientesCompraOuVenda")
+    public String buscarClientesQueCompraramOuVenderam(Model model){
+        List<Cliente> clientes = servico.buscarClientesQueCompraramOuVenderam();
+        model.addAttribute("clientes",clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/ClientesCompraEVenda")
+    public String buscarClientesQueCompraramEVenderam(Model model) {
+        List<Cliente> clientes = servico.buscarClientesQueCompraramEVenderam();
+        model.addAttribute("clientes", clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/ClientesSaldoMaiorAlgumID")
+    public String buscarClientesComSaldoMaiorQueAlgumIDX(Model model,@RequestParam(name = "valor", required = true) Integer x) {
+        List<Cliente> clientes = servico.buscarClientesComSaldoMaiorQueAlgumIDX(x);
+        model.addAttribute("clientes", clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/ClientesSaldoMaiorTodosID")
+    public String buscarClientesComSaldoMaiorQueTodosIDX(Model model,@RequestParam(name = "valor", required = true) Integer x) {
+        List<Cliente> clientes = servico.buscarClientesComSaldoMaiorQueTodosIDX(x);
+        model.addAttribute("clientes", clientes);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/concatenarNomeSobrenome")
+    public String concatenarNomeSobrenome(Model model,String nome) {
+        List<String> nomesCompletos = servico.concatenarNomeSobrenome(nome);
+        model.addAttribute("nomesCompletos", nomesCompletos);
+        return "clientes";
+    }
+
+    @GetMapping("/clientes/adicionarCliente")
+    public String adicionarCliente() {
+        return "adicionarCliente";
+    }
+
+    @PostMapping("/clientes/cadastrar")
+    public String cadastrarCliente(@RequestBody Pessoa cliente) {
+        servico.cadastrarCliente(cliente);
+        return "adicionarCliente";
+    }
+
+
 }
