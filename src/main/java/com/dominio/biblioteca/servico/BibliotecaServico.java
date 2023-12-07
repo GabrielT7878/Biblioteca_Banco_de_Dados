@@ -39,11 +39,14 @@ public class BibliotecaServico {
 
     public List<Livro> buscarLivrosVendidosNaoComprados(){return repositorio.buscarLivrosVendidosNaoComprados();}
 
-    public void removerLivro(Integer id){
+    public boolean removerLivro(Integer id){
         Optional<Livro> livro = repositorio.findById(id);
-        if(!livro.isEmpty()){
+        if(livro.isPresent()) {
             repositorio.delete(livro.get());
+        }else{
+            return false;
         }
+        return true;
     }
 
     public Integer buscarTotalLivros(){return repositorio.buscarTotalLivros();}

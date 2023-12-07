@@ -2,6 +2,7 @@ package com.dominio.biblioteca.entidade;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
+import lombok.Builder;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.data.annotation.*;
@@ -10,6 +11,7 @@ import java.util.List;
 @Setter
 @Getter
 @Entity
+@Builder
 @Table(schema = "biblioteca",name = "livro")
 public class Livro {
     @Id
