@@ -31,7 +31,9 @@ public class ClienteServicoTeste {
     @Test
     @DisplayName("cadastrarCliente > Quando o nome é nulo > retorne falso")
     void cadastrarClienteQuandoONomeÉNuloRetorneFalso() {
-        assertFalse(servico.cadastrarCliente(null,"rodrigues","123456789","33265664"));
+        assertFalse(
+                servico.cadastrarCliente(null,"rodrigues","123456789","33265664")
+        );
     }
 
 }
