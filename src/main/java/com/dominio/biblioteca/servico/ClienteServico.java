@@ -13,6 +13,7 @@ import org.hibernate.collection.spi.PersistentSortedMap;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Objects;
 
 @Service
 @AllArgsConstructor
@@ -61,21 +62,34 @@ public class ClienteServico {
             Cliente cliente = new Cliente();
     }
 
-    public void cadastrarCliente(String nome, String ultimoNome,String cpf, String telefone){
+    public boolean cadastrarCliente(String nome, String ultimoNome,String cpf, String telefone){
+        if(Objects.isNull(cpf) || cpf.isEmpty()){
+            return false;
+        }
+        if(Objects.isNull(nome) || nome.isEmpty()){
+            return false;
+        }
+        if(Objects.isNull(ultimoNome) || ultimoNome.isEmpty()){
+            return false;
+        }
         Pessoa pessoa  = new Pessoa();
         Cliente clienteNovo = new Cliente();
-        TelefonesP telefonesP = new TelefonesP();
+
         pessoa.setCpf(cpf);
         pessoa.setNome(nome);
         pessoa.setUltimoNome(ultimoNome);
         repositorioPessoa.save(pessoa);
-        telefonesP.setTelefone(telefone);
-        telefonesP.setPessoa(pessoa);
-        telefonesP.setPessoaId(pessoa.getIdPessoa());
-        repositorioTelefone.save(telefonesP);
+        if(!Objects.isNull(telefone) || !telefone.isEmpty()){
+            TelefonesP telefonesP = new TelefonesP();
+            telefonesP.setTelefone(telefone);
+            telefonesP.setPessoa(pessoa);
+            telefonesP.setPessoaId(pessoa.getIdPessoa());
+            repositorioTelefone.save(telefonesP);
+        }
         clienteNovo.setPessoa(pessoa);
         clienteNovo.setSaldo(0.0);
         repositorio.save(clienteNovo);
+        return true;
     }
 
     public Integer buscarTotalClientes(){return repositorio.buscarTotalClientes();}
