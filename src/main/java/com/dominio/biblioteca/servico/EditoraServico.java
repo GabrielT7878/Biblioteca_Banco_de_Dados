@@ -38,4 +38,6 @@ public class EditoraServico {
     public List<Editora> ordenarEditorasPorCidade(){return repositorio.ordenarEditorasPorCidade();}
 
     public List<Editora> ordenarEditorasPorCNPJ(){return repositorio.ordenarEditorasPorCNPJ();}
+
+    public List<Editora> encontrarEditoraPorGerente(String nome){return repositorio.encontrarEditoraPorGerente(nome);}
 }

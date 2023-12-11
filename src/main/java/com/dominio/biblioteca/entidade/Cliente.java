@@ -2,9 +2,8 @@ package com.dominio.biblioteca.entidade;
 
 import jakarta.persistence.*;
 import jakarta.persistence.Id;
+import lombok.*;
 import org.springframework.data.annotation.*;
-import lombok.Getter;
-import lombok.Setter;
 import org.springframework.data.annotation.*;
 
 import java.util.List;
@@ -12,6 +11,9 @@ import java.util.List;
 @Getter
 @Entity
 @Table(schema = "biblioteca",name = "cliente")
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 public class Cliente {
     @Id
     @Column(name = "ID_Pessoa")
